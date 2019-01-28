@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 use InstagramScraper\Instagram;
 use App\HashParser;
+use App\Output\ScreenOutput;
 
 class GetHashData extends Command
 {
@@ -46,8 +47,9 @@ class GetHashData extends Command
 		  }
 		}
 		arsort($alltags);
+		$output = new ScreenOutput();
 		
-		$this->displayTags($alltags);
+		$output->outputArrayWithKeys($alltags);
 		
     }
 
@@ -62,9 +64,4 @@ class GetHashData extends Command
         // $schedule->command(static::class)->everyMinute();
     }
 	
-	public function displayTags(array $values){
-	  foreach ($values as $tag => $count){
-		echo $tag, "\t", $count, "\r\n";
-	  }
-	}
 }
