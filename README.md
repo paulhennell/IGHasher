@@ -1,4 +1,4 @@
-IGHasher is a Command Line Application to get related hashtags from recent Instagram posts with a specific hashtag. Biilt with Laravel Zero and Instagram PHP Scraper.
+IGHasher is a Command Line Application to get related hashtags from recent Instagram posts with a specific hashtag. Built with Laravel Zero and Instagram PHP Scraper.
 
 ------
 
