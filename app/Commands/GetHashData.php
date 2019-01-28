@@ -18,6 +18,7 @@ class GetHashData extends Command
      */
     protected $signature = 'get:hash
 							{hashtag}
+							{--l|limit=100}
 							{--f|file=}';
 
     /**
@@ -36,9 +37,10 @@ class GetHashData extends Command
     {
         //
 		$hashtag = $this->argument('hashtag');
+		$limit = $this->option('limit');
 		$this->info('Getting all tags from '. $hashtag);
 		$ig = new Instagram();
-		$medias = $ig->getMediasByTag($hashtag,20);
+		$medias = $ig->getMediasByTag($hashtag,$limit);
 		$alltags = array();
 		foreach ($medias as $media){
 		  $tags = HashParser::getTags($media->getCaption());

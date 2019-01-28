@@ -12,7 +12,8 @@ class GetHashesData extends Command
      *
      * @var string
      */
-    protected $signature = 'get:hashes {hashtags*}';
+    protected $signature = 'get:hashes {hashtags*}
+							{--limit=100}';
 
     /**
      * The description of the command.
@@ -29,11 +30,13 @@ class GetHashesData extends Command
     public function handle()
     {
         $hashtags = $this->argument('hashtags');
+		$limit = $this->option('limit');
 		
 		foreach ($hashtags as $hashtag){
 		  $this->call('get:hash', [
 			  'hashtag' => $hashtag,
 			  '--file' => 'auto',
+			  '--limit' => $limit,
 		  ]);
 		}
 	
