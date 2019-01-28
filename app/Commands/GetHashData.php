@@ -7,6 +7,7 @@ use LaravelZero\Framework\Commands\Command;
 use InstagramScraper\Instagram;
 use App\HashParser;
 use App\Output\ScreenOutput;
+use App\Output\FileOutput;
 
 class GetHashData extends Command
 {
@@ -15,7 +16,9 @@ class GetHashData extends Command
      *
      * @var string
      */
-    protected $signature = 'get:hash {hashtag}';
+    protected $signature = 'get:hash
+							{hashtag}
+							{--f|file=}';
 
     /**
      * The description of the command.
@@ -33,6 +36,7 @@ class GetHashData extends Command
     {
         //
 		$hashtag = $this->argument('hashtag');
+		$this->info('Getting all tags from '. $hashtag);
 		$ig = new Instagram();
 		$medias = $ig->getMediasByTag($hashtag,20);
 		$alltags = array();
@@ -47,9 +51,16 @@ class GetHashData extends Command
 		  }
 		}
 		arsort($alltags);
-		$output = new ScreenOutput();
 		
+		if ($filename = $this->option('file')){
+		  $output = new FileOutput($filename);
+		} else {
+		  $output = new ScreenOutput();
+		}
+
 		$output->outputArrayWithKeys($alltags);
+		$this->info('Done');
+		
 		
     }
 
