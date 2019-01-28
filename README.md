@@ -11,14 +11,14 @@ Requires PHP and composer.
 Clone the repo `cd IGHasher` and run `composer install`
 
 
-##Useage
+## Useage
 
 All commands run from source folder as:
 
 `php IGHasher get:(etc)`
 
 
-###Get hashtags from hashtag
+### Get hashtags from hashtag
 
 `get:hash [HASHTAG]`
 
@@ -33,8 +33,14 @@ a limit flag can be used to scrape more media (Default is 100):
 
 `--limit=200`
 
-###Get hastags from hashtags
+### Get hastags from hashtags
 
 `get:hashes [HASHTAG1] [HASHTAG2] [HASHTAG3]...`
 
-This will search for each hashtag in turn, outputting them to files (as --filename=auto).
+This will search for each hashtag in turn, outputting them to files (as --filename=auto)
+
+
+# Links
+[Laravel Zero](https://github.com/laravel-zero)
+
+[Instagram PHP Scraper](https://github.com/postaddictme/instagram-php-scraper)
