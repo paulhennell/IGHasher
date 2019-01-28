@@ -59,7 +59,7 @@ class GetHashData extends Command
 		
 		if ($filename = $this->option('file')){
 		  if ($filename == "auto"){
-			$filename = "./" . $this->argument('hashtag') . ".txt";
+			$filename = "./output/" . $this->argument('hashtag') . ".txt";
 		  }
 		  $output = new FileOutput($filename);
 		} else {

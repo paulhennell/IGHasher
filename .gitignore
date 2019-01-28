@@ -2,3 +2,6 @@
 /.idea
 /.vscode
 /.vagrant
+/nbproject/private/
+/output/
+nbproject
