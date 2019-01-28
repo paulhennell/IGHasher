@@ -53,6 +53,9 @@ class GetHashData extends Command
 		arsort($alltags);
 		
 		if ($filename = $this->option('file')){
+		  if ($filename == "auto"){
+			$filename = "./" . $this->argument('hashtag') . ".txt";
+		  }
 		  $output = new FileOutput($filename);
 		} else {
 		  $output = new ScreenOutput();
