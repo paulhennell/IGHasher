@@ -13,20 +13,11 @@ class FileOutput implements output{
   public function __construct(string $filename) {
 	$this->filename = $filename;
  }
-
-
-  public function outputArray(array $array) {
-	$data = "";
-	foreach ($array as $value){
-	  $data .= $value . "\r\n";
-	}
-	$this->outputString($data);
-  }
-
-  public function outputArrayWithKeys(array $array) {
-	$data = "";
-	foreach ($array as $key=> $value){
-	  $data .= $key. "\t". $value . "\r\n";
+  
+  public function outputHashtags(array $array) {
+	$data = "Tag\tPost Count\r\n";
+	foreach ($array as $hashtag){
+		  $data .= $hashtag->getTagName() . "\t".  $hashtag->getPostCount(). "\r\n";
 	}
 	$this->outputString($data);
   }

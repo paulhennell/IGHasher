@@ -6,8 +6,10 @@ use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 use InstagramScraper\Instagram;
 use App\HashParser;
+use App\HashSorter;
 use App\Output\ScreenOutput;
 use App\Output\FileOutput;
+use App\Hashtag;
 
 class GetHashData extends Command
 {
@@ -46,13 +48,13 @@ class GetHashData extends Command
 		  $tags = HashParser::getTags($media->getCaption());
 		  foreach ($tags as $tag){
 			if (array_key_exists($tag, $alltags)){
-				$alltags[$tag] ++;
+				$alltags[$tag]->addPost();
 			}else{
-			  $alltags[$tag] =1;
+			  $alltags[$tag] = new Hashtag($tag, 1);
 			}
 		  }
 		}
-		arsort($alltags);
+		uasort($alltags, [HashSorter::class, 'sortByCount']);
 		
 		if ($filename = $this->option('file')){
 		  if ($filename == "auto"){
@@ -63,7 +65,7 @@ class GetHashData extends Command
 		  $output = new ScreenOutput();
 		}
 
-		$output->outputArrayWithKeys($alltags);
+		$output->outputHashtags($alltags);
 		$this->info('Done');
 		
 		

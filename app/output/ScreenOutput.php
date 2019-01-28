@@ -9,18 +9,13 @@ namespace App\Output;
  */
 class ScreenOutput implements output{
  
-  public function outputArray(array $array){
-	$this->outputArrayWithKeys($array);
-  }
-  
-  public function outputArrayWithKeys(array $array) {
-	foreach ($array as $key => $value){
-	  echo $key, "\t", $value, "\r\n";
-	}
-  }
-
   public function outputString(String $string) {
 	echo $string;
   }
-
+  
+  public function outputHashtags(array $array){
+	foreach ($array as $hashtag){
+		  echo $hashtag->getTagName(), "\t", $hashtag->getPostCount(), "\r\n";
+	}
+  }
 }
