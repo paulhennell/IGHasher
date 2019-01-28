@@ -15,7 +15,7 @@ class ScreenOutput implements output{
   
   public function outputHashtags(array $array){
 	foreach ($array as $hashtag){
-		  echo $hashtag->getTagName(), "\t", $hashtag->getPostCount(), "\r\n";
+		  echo $hashtag->getTagName(), "\t", $hashtag->getPostCount(), "\t", $hashtag->getLikesCount(), "\r\n";
 	}
   }
 }

@@ -49,8 +49,9 @@ class GetHashData extends Command
 		  foreach ($tags as $tag){
 			if (array_key_exists($tag, $alltags)){
 				$alltags[$tag]->addPost();
+				$alltags[$tag]->addLikes($media->getLikesCount());
 			}else{
-			  $alltags[$tag] = new Hashtag($tag, 1);
+			  $alltags[$tag] = new Hashtag($tag, 1, $media->getLikesCount());
 			}
 		  }
 		}

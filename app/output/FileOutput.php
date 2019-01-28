@@ -15,9 +15,9 @@ class FileOutput implements output{
  }
   
   public function outputHashtags(array $array) {
-	$data = "Tag\tPost Count\r\n";
+	$data = "Tag\tPost Count\tTotal Likes\tAdverage Likes\r\n";
 	foreach ($array as $hashtag){
-		  $data .= $hashtag->getTagName() . "\t".  $hashtag->getPostCount(). "\r\n";
+		  $data .= $hashtag->getTagName() . "\t".  $hashtag->getPostCount(). "\t" . $hashtag->getLikesCount(). "\t". $hashtag->getAdverageLikes()."\r\n";
 	}
 	$this->outputString($data);
   }

@@ -44,7 +44,7 @@ class Hashtag {
   }
   
     public function getLikesCount(): int{
-	return $this->totalCount;
+	return $this->totalLikes;
   }
   
   public function getAdverageLikes() : int{
