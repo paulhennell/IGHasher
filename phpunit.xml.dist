@@ -14,7 +14,7 @@
         </testsuite>
     </testsuites>
     <listeners>
-        <listener class="NunoMaduro\Collision\Adapters\Phpunit\Listener"/>
+
     </listeners>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
