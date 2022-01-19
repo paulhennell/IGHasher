@@ -21,7 +21,8 @@ class GetHashData extends Command
     protected $signature = 'get:hash
 							{hashtag}
 							{--l|limit=100}
-							{--f|file=}';
+							{--f|file=}
+							{--a}';
 
     /**
      * The description of the command.
@@ -61,7 +62,7 @@ class GetHashData extends Command
 		  if ($filename == "auto"){
 			$filename = "./output/" . $this->argument('hashtag') . ".txt";
 		  }
-		  $output = new FileOutput($filename);
+		  $output = new FileOutput($filename, $this->option('a'));
 		} else {
 		  $output = new ScreenOutput();
 		}

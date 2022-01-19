@@ -13,7 +13,8 @@ class GetHashesData extends Command
      * @var string
      */
     protected $signature = 'get:hashes {hashtags*}
-							{--limit=100}';
+							{--limit=100}
+							{--a}';
 
     /**
      * The description of the command.
@@ -31,13 +32,24 @@ class GetHashesData extends Command
     {
         $hashtags = $this->argument('hashtags');
 		$limit = $this->option('limit');
-		
-		foreach ($hashtags as $hashtag){
-		  $this->call('get:hash', [
-			  'hashtag' => $hashtag,
-			  '--file' => 'auto',
-			  '--limit' => $limit,
-		  ]);
+		if ($this->option('a')){
+		  foreach ($hashtags as $hashtag){
+			$this->call('get:hash', [
+				'hashtag' => $hashtag,
+				'--file' => './merged.txt',
+				'--limit' => $limit,
+				'--a' => true,
+			]);
+		  }
+		} else {
+		  foreach ($hashtags as $hashtag){
+			$this->call('get:hash', [
+				'hashtag' => $hashtag,
+				'--file' => 'auto',
+				'--limit' => $limit,
+			]);
+			sleep(5);
+		  }
 		}
 	
 	  

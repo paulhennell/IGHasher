@@ -18,4 +18,11 @@ class ScreenOutput implements output{
 		  echo $hashtag->getTagName(), "\t", $hashtag->getPostCount(), "\t", $hashtag->getLikesCount(), "\r\n";
 	}
   }
+  
+  public function outputTagInfo(array $array) {
+	foreach ($array as $tag){
+		  echo $tag->name,"\t", $tag->totalCount, "\t", $tag->topCount, "\t", $tag->mostLikes, "\r\n";
+	}
+  }
+  
 }

@@ -10,8 +10,13 @@ namespace App\Output;
 class FileOutput implements output{
   private $filename;
   
-  public function __construct(string $filename) {
+  public function __construct(string $filename, bool $append=false) {
 	$this->filename = $filename;
+	if ($append){
+	  $this->mode = 'a';
+	} else {
+	  $this->mode = 'w';
+	}
  }
   
   public function outputHashtags(array $array) {
@@ -23,9 +28,17 @@ class FileOutput implements output{
   }
 
   public function outputString(String $string) {
-	$f = fopen($this->filename, 'w');
+	$f = fopen($this->filename, $this->mode);
 	fwrite($f, $string);
 	fclose($f);
+  }
+  
+  function outputTagInfo(Array $array){
+	$data = "Tag\tTotal Count\tTop Posts\tTop Likes\r\n";
+	foreach ($array as $tag){
+		  $data .= $tag->name."\t". $tag->totalCount. "\t".$tag->topCount. "\t". $tag->mostLikes. "\r\n";
+	}
+	$this->outputString($data);
   }
 
 }

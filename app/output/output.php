@@ -8,5 +8,6 @@ namespace App\Output;
  */
 interface output {
   function outputHashtags(Array $array);
+  function outputTagInfo(Array $array);
   function outputString(String $string);
 }
